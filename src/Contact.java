@@ -15,7 +15,9 @@ public class Contact {
     }
 
     public static void main(String[] args) {
-        viewContacts("Jon Doe", "2105555555");
+
+//        viewContacts("Jon Doe", "2105555555");
+        addContacts();
     }
 
     public static void showOptions() {
@@ -30,12 +32,33 @@ public class Contact {
     }
 
     public static void viewContacts(String fullName, String phoneNumber) {
-        System.out.println("         Name         |         Phone Number       ");
-        System.out.println("---------------------------------------------------");
-        System.out.printf("%22s", fullName);
+
+        System.out.println("         Name         |       Phone Number       ");
+        System.out.println("-------------------------------------------------");
+        //Add for loop
+        System.out.printf("%-21s", fullName);
         System.out.print(" | ");
         System.out.printf("%16s", phoneNumber);
     }
+
+    public static void addContacts(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter first name");
+        String nameFirst = scan.next();
+
+        System.out.println("Enter last name");
+        String nameLast = scan.next();
+
+        System.out.println("Enter phone number");
+        String phoneNum = scan.next();
+
+        System.out.printf("%-21s", nameFirst + " " + nameLast);
+        System.out.print(" | ");
+        System.out.printf("%16s", phoneNum);
+
+
+    }
+
 
 
 

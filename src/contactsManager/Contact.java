@@ -3,6 +3,7 @@ package contactsManager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class Contact {
 
     public static void main(String[] args) {
 //        viewContacts();
-        showOptions();
+//        showOptions();
         addContact();
     }
 
@@ -67,11 +68,13 @@ public class Contact {
         System.out.print(" | ");
         System.out.printf("%16s", phoneNumber);
 
+        //CREATES PATH TO .txt FILE
         try {
-            File myFile = new File("filename.txt");
+            File myFile = new File("data/contacts.txt");
             if (myFile.createNewFile()) {
                 System.out.println("File created: " + myFile.getName());
             } else {
+                System.out.println();
                 System.out.println("File already exists.");
             }
         } catch (IOException e) {
@@ -79,11 +82,12 @@ public class Contact {
             e.printStackTrace();
         }
 
+        //ADDS NEW CONTACT TO .txt FILE
         try {
-            FileWriter newContact = new FileWriter("contacts.txt");
+            FileWriter newContact = new FileWriter("contacts.txt", true);
             newContact.write(firstName + " " + lastName);
             newContact.write(" | ");
-            newContact.write(phoneNumber);
+            newContact.write(phoneNumber + "\n");
             newContact.close();
             System.out.println();
             System.out.println("Successfully wrote to the file.");
@@ -103,16 +107,6 @@ public class Contact {
     public void deleteContact() {
         
     }
-
-
-
-
-
-
-
-
-
-
 
 
     //GETTERS AND SETTERS

@@ -1,5 +1,9 @@
 package contactsManager;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Contact {
@@ -7,10 +11,11 @@ public class Contact {
     //PROPERTIES
     private String firstName;
     private String lastName;
-    private String phoneNumber;
+    private int phoneNumber;
+    private String fullName = firstName + " " + lastName;
 
     //CONSTRUCTOR
-    public Contact(String firstName, String lastName, String phoneNumber) {
+    public Contact(String firstName, String lastName, int phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -18,7 +23,7 @@ public class Contact {
 
 
     public static void main(String[] args) {
-
+//        viewContacts();
         showOptions();
         addContact();
     }
@@ -37,42 +42,66 @@ public class Contact {
 
     }
 
-    public static void viewContacts(String fullName, String phoneNumber) {
-
-        System.out.println("         Name         |       Phone Number       ");
-        System.out.println("-------------------------------------------------");
-        //Add for loop
-        System.out.printf("%-21s", fullName);
-        System.out.print(" | ");
-        System.out.printf("%16s", phoneNumber);
-    }
+//    public static void viewContacts(String fullName, String phoneNumber) {
+//
+//        System.out.println("         Name         |       Phone Number       ");
+//        System.out.println("-------------------------------------------------");
+//        System.out.println();
+//        System.out.printf("%-21s", fullName);
+//        System.out.print(" | ");
+//        System.out.printf("%16s", phoneNumber);
+//    }
 
     public static void addContact(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name");
-        String nameFirst = scan.next();
+        String firstName = scan.next();
 
         System.out.println("Enter last name");
-        String nameLast = scan.next();
+        String lastName = scan.next();
 
         System.out.println("Enter phone number");
-        String phoneNum = scan.next();
+        String phoneNumber = scan.next();
 
-        System.out.printf("%-21s", nameFirst + " " + nameLast);
+        System.out.printf("%-21s", firstName + " " + lastName);
         System.out.print(" | ");
-        System.out.printf("%16s", phoneNum);
+        System.out.printf("%16s", phoneNumber);
 
+        try {
+            File myFile = new File("filename.txt");
+            if (myFile.createNewFile()) {
+                System.out.println("File created: " + myFile.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        try {
+            FileWriter newContact = new FileWriter("contacts.txt");
+            newContact.write(firstName + " " + lastName);
+            newContact.write(" | ");
+            newContact.write(phoneNumber);
+            newContact.close();
+            System.out.println();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
 
     }
 
     public void contactSearch() {
         Scanner scan = new Scanner(System.in);
         String search = scan.nextLine();
-        for(contact : contacts) {
-            if(search.equalsIgnoreCase(this.firstName) || search.equalsIgnoreCase(this.lastName) || search.equals(this.phoneNumber)) {
-                return contact;
-            }
-        }
+
+    }
+    
+    public void deleteContact() {
+        
     }
 
 
@@ -103,11 +132,11 @@ public class Contact {
         this.lastName = lastName;
     }
 
-    public String getPhoneNumber() {
+    public int getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

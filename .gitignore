@@ -1,4 +1,4 @@
-.idea/*
+../../.idea/vcs.xml
 *.iml
 .DS_Store
-out/*
+out/production

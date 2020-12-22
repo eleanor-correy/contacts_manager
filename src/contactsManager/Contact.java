@@ -1,3 +1,5 @@
+package contactsManager;
+
 import java.util.Scanner;
 
 public class Contact {
@@ -14,10 +16,11 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
+
     public static void main(String[] args) {
 
-//        viewContacts("Jon Doe", "2105555555");
-        addContacts();
+        showOptions();
+        addContact();
     }
 
     public static void showOptions() {
@@ -27,8 +30,11 @@ public class Contact {
         System.out.println("3. Search a contact by name");
         System.out.println("4. Delete an existing contact");
         System.out.println("5. Exit");
+        System.out.println("Enter an option (1, 2, 3, 4, 5): ");
         int selectOption = scan.nextInt();
         System.out.println(selectOption);
+
+
     }
 
     public static void viewContacts(String fullName, String phoneNumber) {
@@ -41,7 +47,7 @@ public class Contact {
         System.out.printf("%16s", phoneNumber);
     }
 
-    public static void addContacts(){
+    public static void addContact(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name");
         String nameFirst = scan.next();
@@ -57,6 +63,16 @@ public class Contact {
         System.out.printf("%16s", phoneNum);
 
 
+    }
+
+    public void contactSearch() {
+        Scanner scan = new Scanner(System.in);
+        String search = scan.nextLine();
+        for(contact : contacts) {
+            if(search.equalsIgnoreCase(this.firstName) || search.equalsIgnoreCase(this.lastName) || search.equals(this.phoneNumber)) {
+                return contact;
+            }
+        }
     }
 
 

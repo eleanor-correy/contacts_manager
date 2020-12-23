@@ -1,6 +1,7 @@
 package contactsManager;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.StandardOpenOption;
@@ -24,9 +25,10 @@ public class Contact {
 
 
     public static void main(String[] args) {
-//        viewContacts();
+        viewContacts();
 //        showOptions();
-        addContact();
+//        addContact();
+//        contactSearch();
     }
 
     public static void showOptions() {
@@ -43,15 +45,33 @@ public class Contact {
 
     }
 
-//    public static void viewContacts(String fullName, String phoneNumber) {
-//
-//        System.out.println("         Name         |       Phone Number       ");
-//        System.out.println("-------------------------------------------------");
-//        System.out.println();
-//        System.out.printf("%-21s", fullName);
-//        System.out.print(" | ");
-//        System.out.printf("%16s", phoneNumber);
-//    }
+    public String getFullName() {
+        return fullName;
+    }
+
+    public static void viewContacts() {
+
+        System.out.println("         Name         |       Phone Number       ");
+        System.out.println("-------------------------------------------------");
+        System.out.println();
+//                System.out.printf("%-21s", this.getFullName());
+//                System.out.print(" | ");
+//                System.out.printf("%16s", this.getPhoneNumber());
+
+
+        try {
+            File myFile = new File("data/contacts.txt");
+            Scanner myReader = new Scanner(myFile);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 
     public static void addContact(){
         Scanner scan = new Scanner(System.in);
@@ -62,7 +82,7 @@ public class Contact {
         String lastName = scan.next();
 
         System.out.println("Enter phone number");
-        String phoneNumber = scan.next();
+        String phoneNumber = scan.nextLine();
 
         System.out.printf("%-21s", firstName + " " + lastName);
         System.out.print(" | ");
@@ -84,7 +104,7 @@ public class Contact {
 
         //ADDS NEW CONTACT TO .txt FILE
         try {
-            FileWriter newContact = new FileWriter("contacts.txt", true);
+            FileWriter newContact = new FileWriter("data/contacts.txt", true);
             newContact.write(firstName + " " + lastName);
             newContact.write(" | ");
             newContact.write(phoneNumber + "\n");
@@ -98,10 +118,21 @@ public class Contact {
 
     }
 
-    public void contactSearch() {
-        Scanner scan = new Scanner(System.in);
-        String search = scan.nextLine();
-
+    public static void contactSearch() {
+        try {
+            File myFile = new File("data/contacts.txt");
+            Scanner myReader = new Scanner(myFile);
+            System.out.println("Enter Name to Search");
+            String searchedItem = myReader.nextLine();
+            while (searchedItem.equalsIgnoreCase(Contact(firstName)) || searchedItem.equalsIgnoreCase(lastName)) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
     
     public void deleteContact() {

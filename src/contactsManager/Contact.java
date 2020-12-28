@@ -16,6 +16,7 @@ public class Contact {
     private String phoneNumber;
     private String fullName = firstName + " " + lastName;
 
+
     //CONSTRUCTOR
     public Contact(String firstName, String lastName, String phoneNumber) {
         this.firstName = firstName;
@@ -42,9 +43,7 @@ public class Contact {
 
     }
 
-    public String getFullName() {
-        return fullName;
-    }
+
 
 
 
@@ -80,6 +79,10 @@ public class Contact {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getFullName() {
+        return fullName;
     }
 
 

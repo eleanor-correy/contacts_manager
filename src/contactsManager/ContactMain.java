@@ -7,7 +7,7 @@ public class ContactMain {
         ContactMethods contact = new ContactMethods();
 //        Contact.showOptions();
 //        contact.createFile();
-//        contact.addContact();
+        contact.addContact();
 //        System.out.println(contact.ContactArrayList);
 //        contact.addContact();
 //        contact.contactSearch();

@@ -2,6 +2,7 @@ package contactsManager;
 
 import javax.xml.crypto.Data;
 import java.io.*;
+import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -136,7 +137,7 @@ public class ContactMethods {
             File tempFile = new File("data/myTempFile.txt");
             FileWriter tempWriter = new FileWriter("data/contacts.txt", true);
             Scanner myReader = new Scanner(myFile);
-            System.out.println("Enter Name to Search");
+            System.out.println("Enter Name to Delete");
             Scanner search = new Scanner(System.in);
             String searchedItem = search.nextLine();
             while (myReader.hasNext())  {
@@ -147,25 +148,22 @@ public class ContactMethods {
                     Scanner yesNo = new Scanner(System.in);
                     String answer = yesNo.nextLine();
                     if(answer.equalsIgnoreCase("yes") || answer.equalsIgnoreCase("y")){
-                        BufferedReader reader = new BufferedReader(new Reader(myFile) {
-                            @Override
-                            public int read(char[] cbuf, int off, int len) throws IOException {
-                                return 0;
-                            }
+                        BufferedReader reader = new BufferedReader(new FileReader(myFile) {
 
-                            @Override
-                            public void close() throws IOException {
-
-                            }
                         });
+
                         BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
                         String lineToRemove = data;
-                        String currentLine;
 
+                        String currentLine;
+                        currentLine = reader.readLine();
+                        writer.write(currentLine);
                         while((currentLine = reader.readLine()) != null) {
+                            System.out.println(currentLine);
                             // trim newline when comparing with lineToRemove
                             String trimmedLine = currentLine.trim();
+
                             if(trimmedLine.equals(lineToRemove)) continue;
                             writer.write(currentLine + System.getProperty("line.separator"));
                         }
@@ -181,6 +179,8 @@ public class ContactMethods {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+
+
 
     }
 

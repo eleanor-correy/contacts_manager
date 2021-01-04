@@ -5,10 +5,7 @@ import java.io.*;
 import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class ContactMethods {
@@ -42,9 +39,6 @@ public class ContactMethods {
         System.out.println("         Name         |       Phone Number       ");
         System.out.println("-------------------------------------------------");
         System.out.println();
-//                System.out.printf("%-21s", this.getFullName());
-//                System.out.print(" | ");
-//                System.out.printf("%16s", this.getPhoneNumber());
 
 
         try {
@@ -98,13 +92,8 @@ public class ContactMethods {
         //ADDS NEW CONTACT TO .txt FILE
         try {
             FileWriter newContact = new FileWriter("data/contacts.txt", true);
-            String fullName = String.format("%-1s %-1s", firstName, lastName);
-            newContact.write(fullName);
-            String pipeFormat = "|";
-            String pipe = String.format("%21s",pipeFormat);
-            newContact.write(pipe);
-            String number = String.format("%-1s", phoneNumber);
-            newContact.write(number + "\n");
+            String fullName = firstName + " " + lastName;
+            newContact.write(String.format("%-22.22s|",fullName) + " " + String.format("%22s",phoneNumber) + "\n");
             newContact.close();
             System.out.println();
             System.out.println("Successfully wrote to the file.");

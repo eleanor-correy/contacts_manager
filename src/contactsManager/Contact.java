@@ -31,6 +31,7 @@ public class Contact {
 
     public static void showOptions() throws IOException {
         Scanner scan = new Scanner(System.in);
+        boolean appRunning = true;
         System.out.println("1. View contacts");
         System.out.println("2. Add a new contact");
         System.out.println("3. Search a contact by name");
@@ -56,7 +57,7 @@ public class Contact {
                 System.out.println("Are you sure you would like to exit?");
                 String exitOption = scan.nextLine();
                 if(exitOption.equalsIgnoreCase("y") || exitOption.equalsIgnoreCase("yes")) {
-                    System.exit(0);
+                   ContactMethods.exitApp();
                 } else {
                     Contact.showOptions();
                 }

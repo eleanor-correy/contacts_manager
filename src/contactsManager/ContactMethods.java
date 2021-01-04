@@ -215,5 +215,8 @@ public class ContactMethods {
 
     }
 
+    public static void exitApp(){
+        System.exit(0);
+    }
 
 }

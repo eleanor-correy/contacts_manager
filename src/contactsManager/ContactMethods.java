@@ -62,7 +62,7 @@ public class ContactMethods {
         }
     }
 
-    public void addContact(){
+    public static void addContact(){
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name");
         String firstName = scan.next();

@@ -14,6 +14,10 @@ public class ContactMain {
             case 1:
                ContactMethods.viewContacts();
                 break;
+            case 2:
+                ContactMethods.addContact();
+                break;
+
         }
 
         ContactMethods contact = new ContactMethods();

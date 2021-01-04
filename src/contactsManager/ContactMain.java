@@ -32,6 +32,9 @@ public class ContactMain {
                     Contact.showOptions();
                 }
                 break;
+            default:
+                System.out.println("Please select valid option");
+                Contact.showOptions();
 
 
         }

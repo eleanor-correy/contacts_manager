@@ -7,6 +7,8 @@ public class ContactMain {
     public static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(System.in);
 
+        Contact.showOptions();
+
 
         ContactMethods contact = new ContactMethods();
 //        contact.createFile();

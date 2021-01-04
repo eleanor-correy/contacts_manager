@@ -23,6 +23,15 @@ public class ContactMain {
             case 4:
                 ContactMethods.deleteContact();
                 break;
+            case 5:
+                System.out.println("Are you sure you would like to exit?");
+                String exitOption = scan.nextLine();
+                if(exitOption.equalsIgnoreCase("y") || exitOption.equalsIgnoreCase("yes")) {
+                    System.exit(0);
+                } else {
+                    Contact.showOptions();
+                }
+                break;
 
 
         }

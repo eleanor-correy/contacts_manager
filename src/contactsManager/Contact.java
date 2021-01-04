@@ -29,7 +29,7 @@ public class Contact {
 
    }
 
-    public static void showOptions() {
+    public static void showOptions() throws IOException {
         Scanner scan = new Scanner(System.in);
         System.out.println("1. View contacts");
         System.out.println("2. Add a new contact");
@@ -37,8 +37,34 @@ public class Contact {
         System.out.println("4. Delete an existing contact");
         System.out.println("5. Exit");
         System.out.println("Enter an option (1, 2, 3, 4, 5): ");
-        int selectOption = scan.nextInt();
-        System.out.println(selectOption);
+
+        int userSelection = scan.nextInt();
+        switch(userSelection) {
+            case 1:
+                ContactMethods.viewContacts();
+                break;
+            case 2:
+                ContactMethods.addContact();
+                break;
+            case 3:
+                ContactMethods.contactSearch();
+                break;
+            case 4:
+                ContactMethods.deleteContact();
+                break;
+            case 5:
+                System.out.println("Are you sure you would like to exit?");
+                String exitOption = scan.nextLine();
+                if(exitOption.equalsIgnoreCase("y") || exitOption.equalsIgnoreCase("yes")) {
+                    System.exit(0);
+                } else {
+                    Contact.showOptions();
+                }
+                break;
+            default:
+                System.out.println("Please select valid option");
+                Contact.showOptions();
+        }
 
 
     }

@@ -37,7 +37,7 @@ public class ContactMethods {
 //
 //    }
 
-    public static void viewContacts() {
+    public static void viewContacts() throws IOException {
 
         System.out.println("         Name         |       Phone Number       ");
         System.out.println("-------------------------------------------------");
@@ -48,7 +48,6 @@ public class ContactMethods {
 
 
         try {
-
             File myFile = new File("data/contacts.txt");
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()) {
@@ -60,9 +59,17 @@ public class ContactMethods {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+        System.out.println("Would you like to exit View Contact Menu?");
+        Scanner scan = new Scanner(System.in);
+        String menuOptions = scan.nextLine();
+        if(menuOptions.equalsIgnoreCase("y") || menuOptions.equalsIgnoreCase("yes")) {
+            Contact.showOptions();
+        } else {
+            viewContacts();
+        }
     }
 
-    public static void addContact(){
+    public static void addContact() throws IOException {
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter first name");
         String firstName = scan.next();
@@ -72,10 +79,6 @@ public class ContactMethods {
 
         System.out.println("Enter phone number");
         String phoneNumber = scan.next();
-
-//        System.out.printf("%-21s", firstName + " " + lastName);
-//        System.out.print(" | ");
-//        System.out.printf("%16s", phoneNumber);
 
         //CREATES PATH TO .txt FILE
         try {
@@ -92,8 +95,6 @@ public class ContactMethods {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
-
         //ADDS NEW CONTACT TO .txt FILE
         try {
             FileWriter newContact = new FileWriter("data/contacts.txt", true);
@@ -109,9 +110,19 @@ public class ContactMethods {
             e.printStackTrace();
         }
 
+        System.out.println("What would you like to do next?");
+        System.out.println("1. Add another contact");
+        System.out.println("2. Exit Add Contact Menu");
+        int menuOptions = scan.nextInt();
+        if(menuOptions == 1) {
+            addContact();
+        } else if(menuOptions == 2) {
+            Contact.showOptions();
+        }
+
     }
 
-    public static void contactSearch() {
+    public static void contactSearch() throws IOException {
         try {
             File myFile = new File("data/contacts.txt");
             Scanner myReader = new Scanner(myFile);
@@ -128,6 +139,16 @@ public class ContactMethods {
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+        }
+        System.out.println("What would you like to do next?");
+        System.out.println("1. Search another contact");
+        System.out.println("2. Exit Add Contact Menu");
+        Scanner scan = new Scanner(System.in);
+        int menuOptions = scan.nextInt();
+        if(menuOptions == 1) {
+            contactSearch();
+        } else if(menuOptions == 2) {
+            Contact.showOptions();
         }
     }
 
@@ -160,7 +181,7 @@ public class ContactMethods {
                         currentLine = reader.readLine();
                         writer.write(currentLine);
                         while((currentLine = reader.readLine()) != null) {
-                            System.out.println(currentLine);
+//                            System.out.println(currentLine);
                             // trim newline when comparing with lineToRemove
                             String trimmedLine = currentLine.trim();
 
@@ -180,6 +201,16 @@ public class ContactMethods {
             e.printStackTrace();
         }
 
+        System.out.println("What would you like to do next?");
+        System.out.println("1. Delete another contact");
+        System.out.println("2. Exit Add Contact Menu");
+        Scanner scan = new Scanner(System.in);
+        int menuOptions = scan.nextInt();
+        if(menuOptions == 1) {
+            deleteContact();
+        } else if(menuOptions == 2) {
+            Contact.showOptions();
+        }
 
 
     }

@@ -1,11 +1,14 @@
 package contactsManager;
 
 import java.io.IOException;
+import java.util.Scanner;
 
 public class ContactMain {
     public static void main(String[] args) throws IOException {
+        Scanner scan = new Scanner(System.in);
+
+
         ContactMethods contact = new ContactMethods();
-//        Contact.showOptions();
 //        contact.createFile();
         contact.addContact();
 //        System.out.println(contact.ContactArrayList);

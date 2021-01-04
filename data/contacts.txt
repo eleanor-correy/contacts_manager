@@ -1,1 +1,6 @@
-Liz Taylor            |             7777777777
+Clark Kent            |              444444444
+Bruce Wayne           |             4444666666
+Peter Parker          |             9997778888
+Wonder Woman          |             6547891234
+James Rhodes          |             8888888888
+James Bond            |                    007

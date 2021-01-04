@@ -9,14 +9,8 @@ public class ContactMain {
         Contact.showOptions();
 
 
-        ContactMethods contact = new ContactMethods();
-//        contact.createFile();
-//        contact.addContact();
-//        System.out.println(contact.ContactArrayList);
-//        contact.addContact();
-//        contact.contactSearch();
-//        contact.deleteContact();
-//        contact.viewContacts();
+//        ContactMethods contact = new ContactMethods();
+
     }
 
 

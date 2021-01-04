@@ -98,9 +98,13 @@ public class ContactMethods {
         //ADDS NEW CONTACT TO .txt FILE
         try {
             FileWriter newContact = new FileWriter("data/contacts.txt", true);
-            newContact.write(firstName + " " + lastName);
-            newContact.write(" | ");
-            newContact.write(phoneNumber + "\n");
+            String fullName = String.format("%-1s %-1s", firstName, lastName);
+            newContact.write(fullName);
+            String pipeFormat = "|";
+            String pipe = String.format("%21s",pipeFormat);
+            newContact.write(pipe);
+            String number = String.format("%-1s", phoneNumber);
+            newContact.write(number + "\n");
             newContact.close();
             System.out.println();
             System.out.println("Successfully wrote to the file.");

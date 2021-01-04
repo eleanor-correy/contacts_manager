@@ -10,7 +10,11 @@ public class ContactMain {
         Contact.showOptions();
         System.out.println("Select a numerical option");
         int userSelection = scan.nextInt();
-
+        switch(userSelection) {
+            case 1:
+               ContactMethods.viewContacts();
+                break;
+        }
 
         ContactMethods contact = new ContactMethods();
 //        contact.createFile();

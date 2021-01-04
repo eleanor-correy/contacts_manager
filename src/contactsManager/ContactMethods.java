@@ -131,7 +131,7 @@ public class ContactMethods {
         }
     }
 
-    public void deleteContact() throws IOException {
+    public static void deleteContact() throws IOException {
         try {
             File myFile = new File("data/contacts.txt");
             File tempFile = new File("data/myTempFile.txt");

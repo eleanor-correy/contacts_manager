@@ -20,6 +20,9 @@ public class ContactMain {
             case 3:
                 ContactMethods.contactSearch();
                 break;
+            case 4:
+                ContactMethods.deleteContact();
+                break;
 
 
         }

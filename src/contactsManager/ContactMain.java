@@ -17,6 +17,10 @@ public class ContactMain {
             case 2:
                 ContactMethods.addContact();
                 break;
+            case 3:
+                ContactMethods.contactSearch();
+                break;
+
 
         }
 

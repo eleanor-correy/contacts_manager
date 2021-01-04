@@ -9,6 +9,7 @@ public class ContactMain {
 
         Contact.showOptions();
         System.out.println("Select a numerical option");
+        int userSelection = scan.nextInt();
 
 
         ContactMethods contact = new ContactMethods();

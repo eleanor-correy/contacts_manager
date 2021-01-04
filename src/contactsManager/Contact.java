@@ -72,18 +72,6 @@ public class Contact {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //GETTERS AND SETTERS
     public String getFirstName() {
         return firstName;

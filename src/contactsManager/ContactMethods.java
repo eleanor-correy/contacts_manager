@@ -9,37 +9,11 @@ import java.util.*;
 
 
 public class ContactMethods {
-    //CREATES PATH TO .txt FILE
-//    List<String> ContactArrayList = new ArrayList<>();
-
-//    public void createFile() throws IOException {
-//        try {
-//
-//            File myFile = new File("data/contacts.txt");
-//            if (myFile.createNewFile()) {
-//                System.out.println("File created: " + myFile.getName());
-//            } else {
-//                System.out.println();
-//                System.out.println("File already exists.");
-//            }
-//            List<String> ContactArrayList = new ArrayList<>();
-//            ContactArrayList = Arrays.asList("");
-//            Files.write(Path.of("data/contacts.txt"), ContactArrayList);
-//            System.out.println(ContactArrayList);
-//        } catch (IOException e) {
-//            System.out.println("An error occurred.");
-//            e.printStackTrace();
-//        }
-//
-//
-//    }
 
     public static void viewContacts() throws IOException {
 
         System.out.println("         Name         |       Phone Number       ");
         System.out.println("-------------------------------------------------");
-        System.out.println();
-
 
         try {
             File myFile = new File("data/contacts.txt");
@@ -82,7 +56,7 @@ public class ContactMethods {
                 System.out.println("File created: " + myFile.getName());
             } else {
                 System.out.println();
-                System.out.println("File already exists.");
+                System.out.println("Successfully Added Contact");
             }
 
         } catch (IOException e) {
@@ -135,7 +109,7 @@ public class ContactMethods {
         }
         System.out.println("What would you like to do next?");
         System.out.println("1. Search another contact");
-        System.out.println("2. Exit Add Contact Menu");
+        System.out.println("2. Exit Search Contact Menu");
         Scanner scan = new Scanner(System.in);
         int menuOptions = scan.nextInt();
         if(menuOptions == 1) {
@@ -149,7 +123,7 @@ public class ContactMethods {
         try {
             File myFile = new File("data/contacts.txt");
             File tempFile = new File("data/myTempFile.txt");
-            FileWriter tempWriter = new FileWriter("data/contacts.txt", true);
+//            FileWriter tempWriter = new FileWriter("data/contacts.txt", true);
             Scanner myReader = new Scanner(myFile);
             System.out.println("Enter Name to Delete");
             Scanner search = new Scanner(System.in);
@@ -174,11 +148,9 @@ public class ContactMethods {
                         currentLine = reader.readLine();
                         writer.write(currentLine);
                         while((currentLine = reader.readLine()) != null) {
-//                            System.out.println(currentLine);
-                            // trim newline when comparing with lineToRemove
                             String trimmedLine = currentLine.trim();
 
-                            if(trimmedLine.equals(lineToRemove)) continue;
+                            if(trimmedLine.equals(lineToRemove)) ;
                             writer.write(currentLine + System.getProperty("line.separator"));
                         }
                         writer.close();
